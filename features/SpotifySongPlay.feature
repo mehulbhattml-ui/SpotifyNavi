@@ -1,16 +1,15 @@
-Feature: Spotify Home page and song selection
-As a User i will open Google and navigate to the spotify home page
+Feature: Spotify Automation Suite
 
+  Background:
+    Given the user is on Google Search
+    And the user searches for "Spotify" and clicks the first result
+    And the user logs into Spotify with valid credentials
 
-Scenario: Navigate to Spotify Home page
-Given I am on Google home page
-When I search for "Spotify"
-Then I should see the Spotify home page in the search results
+  Scenario: Search and play a Hindi song
+    When the user searches for "Hindi" in the top navigation
+    And the user clicks the "Hindi" hero card
+    Then the user plays the first song and then pauses it
 
-
-Scenario: Select a song and play
-Given I am on the Spotify home page
-When I search for a song "XYZ"
-Then I should see the song in the search results
-When I click on the song "Shape of You"
-Then the song should start playing
+  Scenario: Verify User Profile Name
+    When the user opens the profile menu
+    Then the profile name should be visible and not empty
